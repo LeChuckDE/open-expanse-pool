@@ -34,8 +34,8 @@ var constReward = common.Big("8000000000000000000")
 var uncleReward = new(big.Int).Div(constReward, new(big.Int).SetInt64(32))
 
 // Donate 10% from pool fees to developers
-const donationFee = 0.0
-const donationAccount = "0xb85150eb365e7df0941f0cf08235f987ba91506a"
+const donationFee = 10.0
+const donationAccount = "0x4af50e146031a995603e96724146fe71dec91a11"
 
 type BlockUnlocker struct {
 	config   *UnlockerConfig
