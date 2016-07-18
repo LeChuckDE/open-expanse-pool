@@ -316,7 +316,7 @@ This pool is tested to work with [Ethcore's Parity](https://github.com/ethcore/p
 
 ### Credits
 
-Made by sammy007. Licensed under GPLv3.
+Made by sammy007. Licensed under GPLv3.<br>
 Converted to Expanse by LeChuckDE. Licensed under GPLv3
 
 #### Contributors
@@ -325,4 +325,6 @@ Converted to Expanse by LeChuckDE. Licensed under GPLv3
 
 ### Donations
 
-EXP: 0x4af50e146031a995603e96724146fe71dec91a11 | BTC: 1JuoHf8TAk1fZZvGs4mNFhA9qLjRkyo4uG | ETH: 0x29866b10e662b9c8751a58b1f902836fe9928512
+EXP: 0x4af50e146031a995603e96724146fe71dec91a11
+BTC: 1JuoHf8TAk1fZZvGs4mNFhA9qLjRkyo4uG
+ETH: 0x29866b10e662b9c8751a58b1f902836fe9928512
