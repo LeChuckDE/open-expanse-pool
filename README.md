@@ -325,6 +325,6 @@ Converted to Expanse by LeChuckDE. Licensed under GPLv3
 
 ### Donations
 
-EXP: 0x4af50e146031a995603e96724146fe71dec91a11
-BTC: 1JuoHf8TAk1fZZvGs4mNFhA9qLjRkyo4uG
+EXP: 0x4af50e146031a995603e96724146fe71dec91a11<br>
+BTC: 1JuoHf8TAk1fZZvGs4mNFhA9qLjRkyo4uG<br>
 ETH: 0x29866b10e662b9c8751a58b1f902836fe9928512
