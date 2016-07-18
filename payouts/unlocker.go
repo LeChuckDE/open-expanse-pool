@@ -10,9 +10,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/sammy007/open-ethereum-pool/rpc"
-	"github.com/sammy007/open-ethereum-pool/storage"
-	"github.com/sammy007/open-ethereum-pool/util"
+	"github.com/LeChuckDE/open-expanse-pool/rpc"
+	"github.com/LeChuckDE/open-expanse-pool/storage"
+	"github.com/LeChuckDE/open-expanse-pool/util"
 )
 
 type UnlockerConfig struct {
@@ -30,11 +30,11 @@ type UnlockerConfig struct {
 
 const minDepth = 16
 
-var constReward = common.Big("5000000000000000000")
+var constReward = common.Big("8000000000000000000")
 var uncleReward = new(big.Int).Div(constReward, new(big.Int).SetInt64(32))
 
 // Donate 10% from pool fees to developers
-const donationFee = 10.0
+const donationFee = 0.0
 const donationAccount = "0xb85150eb365e7df0941f0cf08235f987ba91506a"
 
 type BlockUnlocker struct {
