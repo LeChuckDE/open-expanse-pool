@@ -6,7 +6,7 @@
 
 ### Features
 
-**This pool is being further developed to provide an easy to use pool for Ethereum miners. This software is functional however an optimised release of the pool is expected soon. Testing and bug submissions are welcome!**
+**This pool is being further developed to provide an easy to use pool for Expanse miners. This software is functional however an optimised release of the pool is expected soon. Testing and bug submissions are welcome!**
 
 * Support for HTTP and Stratum mining
 * Detailed block stats with luck percentage and full reward
@@ -24,11 +24,11 @@
 
 Dependencies:
 
-  * go >= 1.5
+  * go >= 1.6
   * geth
   * redis-server >= 2.8.0
   * nodejs
-  * nginx
+  * nginx or apache
 
 **I highly recommend to use Ubuntu 14.04 LTS.**
 
@@ -112,7 +112,7 @@ otherwise you will get errors on start because of JSON comments.**
   // Set to the number of CPU cores of your server
   "threads": 2,
   // Prefix for keys in redis store
-  "coin": "eth",
+  "coin": "exp",
   // Give unique name to each instance
   "name": "main",
 
@@ -248,7 +248,7 @@ otherwise you will get errors on start because of JSON comments.**
   "unlocker": {
     "enabled": false,
     // Pool fee percentage
-    "poolFee": 1.0,
+    "poolFee": 0.0,
     // Pool fees beneficiary address (leave it blank to disable fee withdrawals)
     "poolFeeAddress": "",
     // Donate 10% from pool fees to developers
@@ -317,6 +317,7 @@ This pool is tested to work with [Ethcore's Parity](https://github.com/ethcore/p
 ### Credits
 
 Made by sammy007. Licensed under GPLv3.
+Converted to Expanse by LeChuckDE. Licensed under GPLv3
 
 #### Contributors
 
@@ -324,4 +325,4 @@ Made by sammy007. Licensed under GPLv3.
 
 ### Donations
 
-Coming Soon: ethereum contract and p2sh script. Please contact subtly on gitter if you would like to donate.
+EXP: 0x4af50e146031a995603e96724146fe71dec91a11 | BTC: 1JuoHf8TAk1fZZvGs4mNFhA9qLjRkyo4uG | ETH: 0x29866b10e662b9c8751a58b1f902836fe9928512
