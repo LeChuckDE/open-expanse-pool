@@ -309,7 +309,7 @@ I recommend this deployment strategy:
 * You must restart module if you see errors with the word *suspended*.
 * Don't run payouts and unlocker modules as part of mining node. Create separate configs for both, launch independently and make sure you have a single instance of each module running.
 * If `poolFeeAddress` is not specified all pool profit will remain on coinbase address. If it specified, make sure to periodically send some dust back required for payments.
-* 
+
 ### In Progress
 * Unlock-Wallet Module with secured Password-File
 * Stratum Miner Mode (Claymore ESM 2, Genoil ES 0)
