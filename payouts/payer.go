@@ -8,11 +8,11 @@ import (
 	"strconv"
 	"time"
 
-	"../rpc"
-	"../storage"
-	"../util"
-
 	"github.com/ethereum/go-ethereum/common"
+
+	"github.com/LeChuckDE/open-expanse-pool/rpc"
+	"github.com/LeChuckDE/open-expanse-pool/storage"
+	"github.com/LeChuckDE/open-expanse-pool/util"
 )
 
 type PayoutsConfig struct {

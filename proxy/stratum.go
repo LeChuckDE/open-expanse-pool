@@ -9,7 +9,7 @@ import (
 	"net"
 	"time"
 
-	"../util"
+	"github.com/LeChuckDE/open-expanse-pool/util"
 )
 
 const (

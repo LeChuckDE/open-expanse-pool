@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"strings"
 
-	"../rpc"
-	"../util"
+	"github.com/LeChuckDE/open-expanse-pool/rpc"
+	"github.com/LeChuckDE/open-expanse-pool/util"
 )
 
 // Allow only lowercase hexadecimal with 0x prefix

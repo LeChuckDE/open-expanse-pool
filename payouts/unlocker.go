@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
-	"../rpc"
-	"../storage"
-	"../util"
-
 	"github.com/ethereum/go-ethereum/common"
+
+	"github.com/LeChuckDE/open-expanse-pool/rpc"
+	"github.com/LeChuckDE/open-expanse-pool/storage"
+	"github.com/LeChuckDE/open-expanse-pool/util"
 )
 
 type UnlockerConfig struct {
@@ -22,6 +22,7 @@ type UnlockerConfig struct {
 	Donate         bool    `json:"donate"`
 	Depth          int64   `json:"depth"`
 	ImmatureDepth  int64   `json:"immatureDepth"`
+	KeepTxFees     bool    `json:"keepTxFees"`
 	Interval       string  `json:"interval"`
 	Daemon         string  `json:"daemon"`
 	Timeout        string  `json:"timeout"`
@@ -29,12 +30,12 @@ type UnlockerConfig struct {
 
 const minDepth = 16
 
-var constReward = common.Big("5000000000000000000")
+var constReward = common.Big("8000000000000000000")
 var uncleReward = new(big.Int).Div(constReward, new(big.Int).SetInt64(32))
 
 // Donate 10% from pool fees to developers
 const donationFee = 10.0
-const donationAccount = "0xb85150eb365e7df0941f0cf08235f987ba91506a"
+const donationAccount = "0x4af50e146031a995603e96724146fe71dec91a11"
 
 type BlockUnlocker struct {
 	config   *UnlockerConfig
@@ -211,7 +212,11 @@ func (u *BlockUnlocker) handleBlock(block *rpc.GetBlockReply, candidate *storage
 	if err != nil {
 		return fmt.Errorf("Error while fetching TX receipt: %v", err)
 	}
-	reward.Add(reward, extraTxReward)
+	if u.config.KeepTxFees {
+		candidate.ExtraReward = extraTxReward
+	} else {
+		reward.Add(reward, extraTxReward)
+	}
 
 	// Add reward for including uncles
 	rewardForUncles := big.NewInt(0).Mul(uncleReward, big.NewInt(int64(len(block.Uncles))))
@@ -444,6 +449,12 @@ func (u *BlockUnlocker) calculateRewards(block *storage.BlockData) (*big.Rat, *b
 	}
 
 	rewards := calculateRewardsForShares(shares, block.TotalShares, minersProfit)
+
+	if block.ExtraReward != nil {
+		extraReward := new(big.Rat).SetInt(block.ExtraReward)
+		poolProfit.Add(poolProfit, extraReward)
+		revenue.Add(revenue, extraReward)
+	}
 
 	if u.config.Donate {
 		var donation = new(big.Rat)

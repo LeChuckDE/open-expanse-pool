@@ -1,12 +1,12 @@
 ## Open Source Ethereum Mining Pool
 
-![Miner's stats page](https://15254b2dcaab7f5478ab-24461f391e20b7336331d5789078af53.ssl.cf1.rackcdn.com/ethereum.vanillaforums.com/editor/pe/cf77cki0pjpt.png)
+![Miner's stats page](http://coinpool.eu/scoep.png)
 
-[![Join the chat at https://gitter.im/sammy007/open-ethereum-pool](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sammy007/open-ethereum-pool?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+ [![Build Status](https://travis-ci.org/LeChuckDE/open-expanse-pool.svg?branch=develop)](https://travis-ci.org/LeChuckDE/open-expanse-pool) 
 
 ### Features
 
-**This pool is being further developed to provide an easy to use pool for Ethereum miners. This software is functional however an optimised release of the pool is expected soon. Testing and bug submissions are welcome!**
+**This pool is being further developed to provide an easy to use pool for Expanse miners. This software is functional however an optimised release of the pool is expected soon. Testing and bug submissions are welcome!**
 
 * Support for HTTP and Stratum mining
 * Detailed block stats with luck percentage and full reward
@@ -24,11 +24,11 @@
 
 Dependencies:
 
-  * go >= 1.5
+  * go >= 1.6
   * geth
   * redis-server >= 2.8.0
   * nodejs
-  * nginx
+  * nginx or apache
 
 **I highly recommend to use Ubuntu 14.04 LTS.**
 
@@ -36,23 +36,11 @@ First install  [go-ethereum](https://github.com/ethereum/go-ethereum/wiki/Instal
 
 I suggest installing Golang-1.6 from <code>deb http://ppa.launchpad.net/ubuntu-lxc/lxd-stable/ubuntu trusty main</code> PPA.
 
-Export GOPATH:
-
-    export GOPATH=$HOME/go
-
-Install required packages:
-
-    go get github.com/ethereum/ethash
-    go get github.com/ethereum/go-ethereum/common
-    go get github.com/gorilla/mux
-    go get gopkg.in/redis.v3
-    go get github.com/yvasiyarov/gorelic
-
 Clone & compile:
 
     git clone https://github.com/sammy007/open-ethereum-pool.git
     cd open-ethereum-pool
-    go build -o ether-pool main.go
+    make
 
 Install redis-server.
 
@@ -64,7 +52,7 @@ For redis it maybe possible to use https://github.com/MSOpenTech/redis/releases.
 
 ### Running Pool
 
-    ./ether-pool config.json
+    ./build/bin/open-ethereum-pool config.json
 
 You can use Ubuntu upstart - check for sample config in <code>upstart.conf</code>.
 
@@ -124,7 +112,7 @@ otherwise you will get errors on start because of JSON comments.**
   // Set to the number of CPU cores of your server
   "threads": 2,
   // Prefix for keys in redis store
-  "coin": "eth",
+  "coin": "exp",
   // Give unique name to each instance
   "name": "main",
 
@@ -212,6 +200,8 @@ otherwise you will get errors on start because of JSON comments.**
     "hashrateWindow": "30m",
     // Long and precise hashrate from shares, 3h is cool, keep it
     "hashrateLargeWindow": "3h",
+    // Collect stats for shares/diff ratio for this number of blocks
+    "luckWindow": [64, 128, 256],
     // Max number of payments to display in frontend
     "payments": 50,
     // Max numbers of blocks to display in frontend
@@ -258,7 +248,7 @@ otherwise you will get errors on start because of JSON comments.**
   "unlocker": {
     "enabled": false,
     // Pool fee percentage
-    "poolFee": 1.0,
+    "poolFee": 0.0,
     // Pool fees beneficiary address (leave it blank to disable fee withdrawals)
     "poolFeeAddress": "",
     // Donate 10% from pool fees to developers
@@ -267,6 +257,8 @@ otherwise you will get errors on start because of JSON comments.**
     "depth": 120,
     // Simply don't touch this option
     "immatureDepth": 20,
+    // Keep mined transaction fees as pool fees
+    "keepTxFees": false,
     // Run unlocker in this interval
     "interval": "10m",
     // Geth instance node rpc endpoint for unlocking blocks
@@ -318,13 +310,20 @@ I recommend this deployment strategy:
 * Don't run payouts and unlocker modules as part of mining node. Create separate configs for both, launch independently and make sure you have a single instance of each module running.
 * If `poolFeeAddress` is not specified all pool profit will remain on coinbase address. If it specified, make sure to periodically send some dust back required for payments.
 
+### In Progress
+* Unlock-Wallet Module with secured Password-File
+* Stratum Miner Mode (Claymore ESM 2, Genoil ES 0)
+* Stratum Nicehash Mode (Claymore ESM 3, Genoil ES 2)
+
+
 ### Alternative Ethereum Implementations
 
 This pool is tested to work with [Ethcore's Parity](https://github.com/ethcore/parity). Mining and block unlocking works, but I am not sure about payouts and suggest to run *official* geth node for payments.
 
 ### Credits
 
-Made by sammy007. Licensed under GPLv3.
+Made by sammy007. Licensed under GPLv3.<br>
+Converted to Expanse by LeChuckDE. Licensed under GPLv3
 
 #### Contributors
 
@@ -332,4 +331,6 @@ Made by sammy007. Licensed under GPLv3.
 
 ### Donations
 
-Coming Soon: ethereum contract and p2sh script. Please contact subtly on gitter if you would like to donate.
+EXP: 0x4af50e146031a995603e96724146fe71dec91a11<br>
+BTC: 1JuoHf8TAk1fZZvGs4mNFhA9qLjRkyo4uG<br>
+ETH: 0x29866b10e662b9c8751a58b1f902836fe9928512

@@ -9,12 +9,12 @@ import (
 	"runtime"
 	"time"
 
-	"./api"
-	"./payouts"
-	"./proxy"
-	"./storage"
-
 	"github.com/yvasiyarov/gorelic"
+
+	"github.com/LeChuckDE/open-expanse-pool/api"
+	"github.com/LeChuckDE/open-expanse-pool/payouts"
+	"github.com/LeChuckDE/open-expanse-pool/proxy"
+	"github.com/LeChuckDE/open-expanse-pool/storage"
 )
 
 var cfg proxy.Config

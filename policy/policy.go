@@ -9,8 +9,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"../storage"
-	"../util"
+	"github.com/LeChuckDE/open-expanse-pool/storage"
+	"github.com/LeChuckDE/open-expanse-pool/util"
 )
 
 type Config struct {

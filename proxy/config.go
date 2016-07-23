@@ -1,10 +1,10 @@
 package proxy
 
 import (
-	"../api"
-	"../payouts"
-	"../policy"
-	"../storage"
+	"github.com/LeChuckDE/open-expanse-pool/api"
+	"github.com/LeChuckDE/open-expanse-pool/payouts"
+	"github.com/LeChuckDE/open-expanse-pool/policy"
+	"github.com/LeChuckDE/open-expanse-pool/storage"
 )
 
 type Config struct {
