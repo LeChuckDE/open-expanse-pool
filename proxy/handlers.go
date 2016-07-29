@@ -74,7 +74,11 @@ func (s *ProxyServer) handleSubmitRPC(cs *Session, login, id string, params []st
 
 	if exist {
 		log.Printf("Duplicate share from %s@%s %v", login, cs.ip, params)
-		return false, &ErrorReply{Code: 22, Message: "Duplicate share"}
+		//Nicehash Patch-01 from open-ethereum-pool
+		if !ok {
+			return false, &ErrorReply{Code: 23, Message: "Invalid share"}
+			}
+		return false, nil
 	}
 
 	if !validShare {
