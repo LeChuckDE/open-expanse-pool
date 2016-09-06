@@ -3,7 +3,7 @@ import config from '../config/environment';
 
 export default Ember.Route.extend({
   model: function() {
-    var url = config.APP.ApiUrl + 'api/miners';
+    var url = config.APP.ApiUrl + 'apiexp/miners';
     return Ember.$.getJSON(url).then(function(data) {
       if (data.miners) {
         // Convert map to array
