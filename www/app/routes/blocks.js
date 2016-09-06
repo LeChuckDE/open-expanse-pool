@@ -4,7 +4,7 @@ import config from '../config/environment';
 
 export default Ember.Route.extend({
 	model: function() {
-    var url = config.APP.ApiUrl + 'api/blocks';
+    var url = config.APP.ApiUrl + 'apiexp/blocks';
     return Ember.$.getJSON(url).then(function(data) {
 			if (data.candidates) {
 				data.candidates = data.candidates.map(function(b) {
