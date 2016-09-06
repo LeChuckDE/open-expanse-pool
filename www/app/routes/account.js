@@ -3,7 +3,7 @@ import config from '../config/environment';
 
 export default Ember.Route.extend({
 	model: function(params) {
-		var url = config.APP.ApiUrl + 'api/accounts/' + params.login;
+		var url = config.APP.ApiUrl + 'apiexp/accounts/' + params.login;
     return Ember.$.getJSON(url).then(function(data) {
       data.login = params.login;
       return Ember.Object.create(data);
