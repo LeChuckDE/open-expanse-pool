@@ -103,11 +103,11 @@ func (s *ApiServer) Start() {
 
 func (s *ApiServer) listen() {
 	r := mux.NewRouter()
-	r.HandleFunc("/api/stats", s.StatsIndex)
-	r.HandleFunc("/api/miners", s.MinersIndex)
-	r.HandleFunc("/api/blocks", s.BlocksIndex)
-	r.HandleFunc("/api/payments", s.PaymentsIndex)
-	r.HandleFunc("/api/accounts/{login:0x[0-9a-fA-F]{40}}", s.AccountIndex)
+	r.HandleFunc("/apiexp/stats", s.StatsIndex)
+	r.HandleFunc("/apiexp/miners", s.MinersIndex)
+	r.HandleFunc("/apiexp/blocks", s.BlocksIndex)
+	r.HandleFunc("/apiexp/payments", s.PaymentsIndex)
+	r.HandleFunc("/apiexp/accounts/{login:0x[0-9a-fA-F]{40}}", s.AccountIndex)
 	r.NotFoundHandler = http.HandlerFunc(notFound)
 	err := http.ListenAndServe(s.config.Listen, r)
 	if err != nil {
