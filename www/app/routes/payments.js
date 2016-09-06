@@ -4,7 +4,7 @@ import config from '../config/environment';
 
 export default Ember.Route.extend({
 	model: function() {
-    var url = config.APP.ApiUrl + 'api/payments';
+    var url = config.APP.ApiUrl + 'apiexp/payments';
     return Ember.$.getJSON(url).then(function(data) {
 			if (data.payments) {
 				data.payments = data.payments.map(function(p) {
