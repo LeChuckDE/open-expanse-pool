@@ -9,7 +9,7 @@ export default Ember.Route.extend({
   },
 
 	model: function() {
-    var url = config.APP.ApiUrl + 'api/stats';
+    var url = config.APP.ApiUrl + 'apiexp/stats';
     return Ember.$.getJSON(url).then(function(data) {
       return Ember.Object.create(data);
     });
